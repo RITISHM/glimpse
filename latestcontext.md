@@ -27,7 +27,7 @@
 ## Current State
 - The frontend has been completely redesigned with a premium dark cinematic aesthetic.
 - The backend successfully makes asynchronous API requests to the cloud GPU.
-- The `mlpipeline` is running live on a serverless Modal endpoint (`https://ritishmahajan15--glimpse-ml-pipeline-fastapi-app.modal.run`).
+- The `mlpipeline` is running live on a serverless Modal endpoint (`https://ritish1621-becse24--glimpse-ml-pipeline-fastapi-app.modal.run`).
 
 ## 4. Frontend Cinematic UI Overhaul
 - **Aesthetic Pivot**: The entire marketing frontend (Landing Page, How It Works, For Photographers, About) was overhauled from a light, paper-themed aesthetic (`bg-white/gray`) to a premium, immersive **3D Cinematic Dark Theme** (`bg-[#0C0C0C]` with `#D7E2EA` metallic accents and `Kanit` heavy typography).

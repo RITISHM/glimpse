@@ -22,7 +22,7 @@ When a photographer uploads a photo, your backend should:
 ```javascript
 import { adminSupabase } from "../config/supabase.js";
 
-const ML_PIPELINE_URL = "https://ritishmahajan15--glimpse-ml-pipeline-fastapi-app.modal.run";
+const ML_PIPELINE_URL = "https://ritish1621-becse24--glimpse-ml-pipeline-fastapi-app.modal.run";
 
 export const triggerProcessing = async (eventId, photos) => {
   // 1. Mark photos as processing in DB

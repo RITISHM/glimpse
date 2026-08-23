@@ -588,7 +588,7 @@ const processPhoto = async (req, res) => {
 
     // 3. Call Modal Serverless GPU API to extract faces & embeddings
     try {
-        const mlUrl = "https://ritishmahajan15--glimpse-ml-pipeline-fastapi-app.modal.run";
+        const mlUrl = "https://ritish1621-becse24--glimpse-ml-pipeline-fastapi-app.modal.run";
         const response = await fetch(`${mlUrl}/process-photo`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -618,7 +618,7 @@ Because Modal automatically spins up multiple serverless GPU containers dynamica
 
 ```javascript
 const processBatch = async (eventId, photos) => {
-    const mlEndpoint = "https://ritishmahajan15--glimpse-ml-pipeline-fastapi-app.modal.run";
+    const mlEndpoint = "https://ritish1621-becse24--glimpse-ml-pipeline-fastapi-app.modal.run";
     
     // Fire all requests concurrently; Modal auto-scales GPUs instantly
     Promise.allSettled(photos.map(async (photo) => {

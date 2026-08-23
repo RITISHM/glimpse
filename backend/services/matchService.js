@@ -24,7 +24,7 @@ export const matchSelfie = async (eventId, sessionId, selfieFile) => {
     });
   if (uploadError) throw new Error('Failed to upload selfie');
 
-  const mlEndpoint = "https://ritishmahajan15--glimpse-ml-pipeline-fastapi-app.modal.run";
+  const mlEndpoint = process.env.ML_API_URL || "https://ritish1621-becse24--glimpse-ml-pipeline-fastapi-app.modal.run";
   const response = await fetch(`${mlEndpoint}/match-selfie`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

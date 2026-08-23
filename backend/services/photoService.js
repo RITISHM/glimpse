@@ -160,7 +160,7 @@ export const triggerProcessing = async (eventId) => {
 
   // 4. Send to ML Pipeline concurrently
   try {
-    const mlEndpoint = "https://ritishmahajan15--glimpse-ml-pipeline-fastapi-app.modal.run";
+    const mlEndpoint = process.env.ML_API_URL || "https://ritish1621-becse24--glimpse-ml-pipeline-fastapi-app.modal.run";
 
     // We do NOT wait for this to finish before returning to the frontend.
     // The ML Pipeline will process photos, and we update the event when all are done.
