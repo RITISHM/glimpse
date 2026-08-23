@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, Outlet, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Settings, LogOut, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, Settings, LogOut, ChevronRight, Crown } from 'lucide-react';
 import { cn } from '@/utils/utils';
 import { authService } from '@/services/authService';
 
 const NAV_ITEMS = [
   { label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard' },
+  { label: 'Subscription', icon: Crown, to: '/dashboard/subscription' },
   { label: 'Settings', icon: Settings, to: '/dashboard/settings' },
 ];
 

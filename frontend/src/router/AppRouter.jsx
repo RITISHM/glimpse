@@ -6,6 +6,7 @@ import { DashboardLayout, GuestLayout } from '@/components/layout';
 import LandingPage from '../pages/LandingPage';
 import LoginPage from '../pages/LoginPage';
 import DashboardPage from '../pages/DashboardPage';
+import SubscriptionPage from '../pages/SubscriptionPage';
 import PhotographerSettingsPage from '../pages/PhotographerSettingsPage';
 import CreateEventPage from '../pages/CreateEventPage';
 import EventWorkspacePage from '../pages/EventWorkspacePage';
@@ -29,6 +30,7 @@ export default function AppRouter() {
       
       <Route element={<DashboardLayout />}>
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard/subscription" element={<SubscriptionPage />} />
         <Route path="/dashboard/settings" element={<PhotographerSettingsPage />} />
         <Route path="/events/new" element={<CreateEventPage />} />
         <Route path="/events/:eventId" element={<EventWorkspacePage />} />
