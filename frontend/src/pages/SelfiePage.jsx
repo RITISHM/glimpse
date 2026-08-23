@@ -17,7 +17,6 @@ export default function SelfiePage() {
   
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const fileInputRef = useRef(null);
   
   const [stream, setStream] = useState(null);
   const [hasPermission, setHasPermission] = useState(null);
@@ -86,20 +85,6 @@ export default function SelfiePage() {
     startCamera();
   };
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setCapturedImage(e.target.result);
-      if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-        setStream(null);
-      }
-    };
-    reader.readAsDataURL(file);
-  };
 
   const { data: event } = useQuery({
     queryKey: ['guest_event', eventSlug],
@@ -200,20 +185,6 @@ export default function SelfiePage() {
               >
                 <div className="w-full h-full rounded-full bg-[#D7E2EA] shadow-inner transition-transform group-hover:scale-95 group-active:scale-90 flex items-center justify-center" />
               </button>
-              <button 
-                onClick={() => fileInputRef.current?.click()}
-                className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-[#D7E2EA]/70 hover:text-[#D7E2EA] transition-colors bg-white/5 border border-white/10 px-6 py-3 rounded-full backdrop-blur-xl hover:bg-white/10"
-              >
-                <Upload className="w-4 h-4" />
-                Upload a selfie instead
-              </button>
-              <input 
-                type="file" 
-                accept="image/*" 
-                className="hidden" 
-                ref={fileInputRef} 
-                onChange={handleFileUpload} 
-              />
             </div>
           </>
         )}
