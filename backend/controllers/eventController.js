@@ -35,6 +35,7 @@ export const createEvent = async (req, res) => {
     const photographerMeta = {
       email: req.user.email,
       name: req.user.user_metadata?.name || req.user.email?.split('@')[0] || 'Photographer',
+      account_type: req.user.user_metadata?.account_type || 'personal',
     };
     const event = await eventService.createEvent(photographerId, req.body, photographerMeta);
     res.status(201).json(event);

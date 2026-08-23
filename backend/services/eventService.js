@@ -49,6 +49,8 @@ export const createEvent = async (photographerId, eventData, photographerMeta = 
   const id = uuidv4();
   const slug = eventData.name.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-' + id.substring(0, 6);
   
+  const collectionType = eventData.collection_type || (photographerMeta.account_type === 'personal' ? 'general' : 'event');
+
   const { data, error } = await adminSupabase
     .from('events')
     .insert([
@@ -58,6 +60,7 @@ export const createEvent = async (photographerId, eventData, photographerMeta = 
         name: eventData.name,
         slug,
         date: eventData.date,
+        collection_type: collectionType,
         cover_photo_url: null,
         status: 'draft',
         photo_count: 0,

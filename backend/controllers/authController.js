@@ -4,13 +4,13 @@ import path from 'path';
 
 export const register = async (req, res) => {
   try {
-    const { email, password, name } = req.body;
+    const { email, password, name, account_type } = req.body;
 
     if (!email || !password || !name) {
       return res.status(400).json({ error: 'Email, password, and name are required' });
     }
 
-    const data = await registerUser(email, password, name);
+    const data = await registerUser(email, password, name, account_type || 'personal');
 
     return res.status(201).json({
       message: 'User registered successfully',
@@ -54,12 +54,13 @@ export const getMe = async (req, res) => {
 };
 export const updateMe = async (req, res) => {
   try {
-    const { name, brandColor } = req.body;
+    const { name, brandColor, account_type } = req.body;
     
     // We update the user metadata and optionally sync the name to the photographers table
     const updatedUser = await updateUserMetadata(req.user.id, {
       name,
       brandColor,
+      ...(account_type && { account_type }),
     });
     
     return res.status(200).json({

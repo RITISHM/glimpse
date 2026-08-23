@@ -1,6 +1,6 @@
 import supabase, { adminSupabase } from '../config/supabase.js';
 
-export const registerUser = async (email, password, name) => {
+export const registerUser = async (email, password, name, account_type = 'personal') => {
   // Sign up the user in Supabase Auth
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -8,6 +8,7 @@ export const registerUser = async (email, password, name) => {
     options: {
       data: {
         name, // Save name to user metadata
+        account_type, // Save account_type to user metadata
       },
     },
   });
