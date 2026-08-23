@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
@@ -16,6 +16,22 @@ const itemVariants = {
 };
 
 export default function SubscriptionPage() {
+  const [accountType, setAccountType] = useState('commercial');
+
+  useEffect(() => {
+    try {
+      const userStr = localStorage.getItem('glimpse_user');
+      if (userStr) {
+        const user = JSON.parse(userStr);
+        if (user.user_metadata?.account_type) {
+          setAccountType(user.user_metadata.account_type);
+        }
+      }
+    } catch (e) {
+      console.error('Failed to parse user from local storage');
+    }
+  }, []);
+
   return (
     <motion.div
       variants={containerVariants}
@@ -32,10 +48,13 @@ export default function SubscriptionPage() {
         </p>
       </motion.div>
 
-      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         
-        {/* Personal Free */}
-        <div className="bg-[#1A1A1A] border border-white/10 p-8 rounded-3xl relative overflow-hidden flex flex-col group transition-all hover:border-white/20">
+        {/* Personal Plans */}
+        {accountType === 'personal' && (
+          <>
+            {/* Personal Free */}
+            <div className="bg-[#1A1A1A] border border-white/10 p-8 rounded-3xl relative overflow-hidden flex flex-col group transition-all hover:border-white/20">
           <div className="text-[#D7E2EA]/50 font-black uppercase tracking-widest text-xs mb-2">Personal</div>
           <div className="text-2xl font-black uppercase text-white mb-4">Free</div>
           <div className="text-3xl font-black text-white mb-6">$0<span className="text-sm text-[#D7E2EA]/50 font-bold uppercase">/mo</span></div>
@@ -69,9 +88,14 @@ export default function SubscriptionPage() {
             Upgrade
           </button>
         </div>
+          </>
+        )}
 
-        {/* Commercial Starter */}
-        <div className="bg-[#1A1A1A] border border-[#7C6EF6]/50 p-8 rounded-3xl relative overflow-hidden flex flex-col group shadow-[0_0_30px_rgba(124,110,246,0.15)] transition-all">
+        {/* Commercial Plans */}
+        {accountType === 'commercial' && (
+          <>
+            {/* Commercial Starter */}
+            <div className="bg-[#1A1A1A] border border-[#7C6EF6]/50 p-8 rounded-3xl relative overflow-hidden flex flex-col group shadow-[0_0_30px_rgba(124,110,246,0.15)] transition-all">
           <div className="absolute top-0 inset-x-0 h-1 bg-[#7C6EF6]"></div>
           <div className="text-[#7C6EF6] font-black uppercase tracking-widest text-xs mb-2 flex justify-between">
             <span>Commercial</span>
@@ -118,6 +142,8 @@ export default function SubscriptionPage() {
             Contact Sales
           </button>
         </div>
+          </>
+        )}
 
       </motion.div>
     </motion.div>

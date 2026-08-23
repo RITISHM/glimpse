@@ -24,6 +24,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [accountType, setAccountType] = useState('personal');
   
   // Carousel State
   const [currentImage, setCurrentImage] = useState(0);
@@ -44,7 +45,7 @@ export default function LoginPage() {
       if (isLogin) {
         await authService.login({ email, password });
       } else {
-        await authService.register({ name, email, password });
+        await authService.register({ name, email, password, account_type: accountType });
       }
       // Route based on successful login
       navigate(ROUTES.DASHBOARD);
@@ -135,6 +136,36 @@ export default function LoginPage() {
                       onChange={(e) => setName(e.target.value)}
                       className="relative w-full pl-12 pr-4 py-3.5 bg-[#1A1A1A] border border-white/10 rounded-2xl text-sm focus:outline-none focus:border-[#D7E2EA]/50 transition-all shadow-inner text-[#D7E2EA] placeholder:text-[#D7E2EA]/30 font-light z-0"
                     />
+                  </div>
+                </div>
+              )}
+
+              {!isLogin && (
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-[#D7E2EA]/60 ml-1">Account Type</label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <button 
+                      type="button"
+                      onClick={() => setAccountType('personal')}
+                      className={cn(
+                        "p-4 rounded-2xl border text-left transition-all text-sm font-black uppercase tracking-widest",
+                        accountType === 'personal' ? "bg-white/10 border-[#D7E2EA]/50 text-white" : "bg-[#1A1A1A] border-white/10 text-[#D7E2EA]/50 hover:border-white/30"
+                      )}
+                    >
+                      <div className="mb-1">Personal</div>
+                      <div className="text-[9px] font-bold text-[#D7E2EA]/40">General Photo Sharing</div>
+                    </button>
+                    <button 
+                      type="button"
+                      onClick={() => setAccountType('commercial')}
+                      className={cn(
+                        "p-4 rounded-2xl border text-left transition-all text-sm font-black uppercase tracking-widest",
+                        accountType === 'commercial' ? "bg-white/10 border-[#7C6EF6]/50 text-[#7C6EF6]" : "bg-[#1A1A1A] border-white/10 text-[#D7E2EA]/50 hover:border-white/30"
+                      )}
+                    >
+                      <div className="mb-1">Commercial</div>
+                      <div className="text-[9px] font-bold text-[#D7E2EA]/40">Professional & Events</div>
+                    </button>
                   </div>
                 </div>
               )}
