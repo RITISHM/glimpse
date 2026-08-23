@@ -8,7 +8,7 @@ import { useToast } from '@/components/ui/toast';
 
 const MOCK_COVERS = [
   { id: 'wedding', url: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80', label: 'Wedding' },
-  { id: 'birthday', url: 'https://images.unsplash.com/photo-1530103862676-de8892b07d62?w=800&q=80', label: 'Birthday' },
+  { id: 'birthday', url: 'https://images.unsplash.com/photo-1464349153735-7db50ed83c84?w=800&q=80', label: 'Birthday' },
   { id: 'party', url: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80', label: 'Party' },
   { id: 'corporate', url: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80', label: 'Corporate' }
 ];
