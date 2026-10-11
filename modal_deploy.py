@@ -28,7 +28,7 @@ image = (
 @app.function(
     image=image,
     gpu="T4",
-    secrets=[modal.Secret.from_dotenv()],
+    secrets=[modal.Secret.from_dotenv(path="./mlpipeline/.env")],
 )
 @modal.asgi_app()
 def fastapi_app():

@@ -2,9 +2,10 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# Load .env file from project root or current directory
-root_dir = Path(__file__).resolve().parent.parent
-env_path = root_dir / ".env"
+# Load .env file from mlpipeline directory or fallback to current directory
+ml_dir = Path(__file__).resolve().parent
+root_dir = ml_dir.parent
+env_path = ml_dir / ".env"
 if env_path.exists():
     load_dotenv(dotenv_path=env_path)
 else:

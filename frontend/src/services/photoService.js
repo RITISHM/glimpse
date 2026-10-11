@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_BASE_URL || 'https://glimpse-201r.onrender.com/api';
+import { API_URL } from './apiConfig';
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('glimpse_token');

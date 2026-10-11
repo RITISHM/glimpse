@@ -1,3 +1,4 @@
+export { API_URL } from './apiConfig';
 export { authService } from './authService';
 export { eventService } from './eventService';
 export { photoService } from './photoService';
